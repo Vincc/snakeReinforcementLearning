@@ -31,8 +31,8 @@ class SnakeEnv(gym.Env):
         self.viewer = None
         self.discrete_actions = [0, 1, 2, 3]
         self.action_space = Discrete(len(self.discrete_actions))
-        self.observation_space = Box(low=0, high=255, shape=(
-            self.size, self.size, 3), dtype=np.uint8)
+        self.observation_space = Box(low=0, high=255, dtype=np.uint8 ,shape=(
+            self.size, self.size, 3))
     def getpos(self, pos):
         return (pos - 1) * (self.size / self.numcell)
 
@@ -84,7 +84,7 @@ class SnakeEnv(gym.Env):
         pygame.display.update()
         return [self.get_state(), self.reward, self.done]
     def get_state(self):
-        state = np.fliplr(np.flip(np.rot90(pygame.surfarray.array3d(pygame.display.get_surface()).astype(np.uint8))))
+        state = np.fliplr(np.flip(np.rot90(pygame.surfarray.array3d(pygame.display.get_surface()).astype(np.uint8)),axis=0))
         return state
 
     def reset(self):
