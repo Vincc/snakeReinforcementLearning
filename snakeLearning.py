@@ -41,13 +41,13 @@ def randomSample():
         env.step(env.action_space.sample()) # take a random action
     env.close()
 
-
-model = DQN(MlpPolicy, env, verbose=1, prioritized_replay=True)
-# Train the agent
-start = time.time()
-model.learn(total_timesteps=4000)
-end = time.time()
-model.save("dqn_snakeml")
-
-eval_model = DQN.load("dqn_snakeml")
-# Evaluate the trained agent
+randomSample()
+# model = DQN(MlpPolicy, env, verbose=1, prioritized_replay=True)
+# # Train the agent
+# start = time.time()
+#
+# end = time.time()
+# model.save("dqn_snakeml")
+# model.learn(total_timesteps=4000)
+# eval_model = DQN.load("dqn_snakeml")
+# # Evaluate the trained agent
